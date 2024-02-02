@@ -3,7 +3,25 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+html,body{
+    height: 100%;
+    margin: 0;
+}
+body {
+    background-image: url('bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+h1{
+    margin: auto;
+    width: 30%;
+    border: 3px solid green;
+    padding: 10px;
+    text-align: center;
+    background-color: #782d2d;
+    color: aqua;
+}
 .container{
     width: 40%;
     min-width: 500px;
@@ -11,17 +29,17 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #ae8b8b;
+    background: #023047;
     padding-bottom: 60px;
     border-radius:10px;
     box-shadow: #ae8b8b 0px 2px 4px,
-                red 0px 7px 13px -3px,
+                rgb(77, 20, 20) 0px 7px 13px -3px,
                 green 0px -3px 0px inset;
 }
 
 .timer-display{
     width: 100%;
-    background: #e31add;
+    background: #ffb703;
     padding: 40px 0;
     font-family: 'Baloo Bhai', cursive;
     color:white;
@@ -57,8 +75,8 @@
 
 .action button{
     padding: 10px 20px;
-    background-color: #ffffff;
-    color: #141313;
+    background-color: white;
+    color: black;
     border: none;
     font-family: 'Baloo Bhai', cursive;
     font-size: 18px;
@@ -71,9 +89,25 @@
 }
 
 button:hover{
-    background-color:#141313 ;
-    color: #ffffff;
-    border: 3px solid #b6b6b6;
+    background-color:black ;
+    color: red;
+    border: 3px solid white;
     padding: 7px 17px;
     
 } 
+footer{
+    background: black;
+    color: white;
+    padding: 9px 22px;
+    text-align: center;
+    font-family: 'Bree Serif', serif;
+    font-size: 1.8rem;
+    padding: 12px;
+    border-radius: 10px;
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    margin-top:1%;
+    bottom: 0;
+    top:88%;
+}
