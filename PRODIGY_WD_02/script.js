@@ -1,79 +1,85 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+var ms = 0, s = 0, m = 0, h = 0
+var timer;
+
+var display = document.querySelector(".timer-Display")
+var laps = document.querySelector(".laps")
+
+
+function start(){
+    if(!timer){
+        timer = setInterval(run, 10)
+    }
 }
 
-.container{
-    width: 40%;
-    min-width: 500px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #ae8b8b;
-    padding-bottom: 60px;
-    border-radius:10px;
-    box-shadow: #ae8b8b 0px 2px 4px,
-                red 0px 7px 13px -3px,
-                green 0px -3px 0px inset;
-}
-
-.timer-display{
-    width: 100%;
-    background: #e31add;
-    padding: 40px 0;
-    font-family: 'Baloo Bhai', cursive;
-    color:white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 4rem;
-    border-radius: 10px 10px 0 0;
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
-                rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, 
-                rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, 
-                rgba(0, 0, 0, 0.06) 0px 2px 1px, 
-                rgba(0, 0, 0, 0.09) 0px 4px 2px, 
-                rgba(0, 0, 0, 0.09) 0px 8px 4px, 
-                rgba(0, 0, 0, 0.09) 0px 16px 8px, 
-                rgba(0, 0, 0, 0.09) 0px 32px 16px;
-}
-
-.laps{
-    text-align: center;
-    color: white;
-    margin-top: 10px;
-    text-decoration: none;
-}
-
-.action{
-    width: 85%;
-    margin: 60px auto 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 30px;
-}
-
-.action button{
-    padding: 10px 20px;
-    background-color: #ffffff;
-    color: #141313;
-    border: none;
-    font-family: 'Baloo Bhai', cursive;
-    font-size: 18px;
-    font-weight: 500;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
-                rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
-                rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-}
-
-button:hover{
-    background-color:#141313 ;
-    color: #ffffff;
-    border: 3px solid #b6b6b6;
-    padding: 7px 17px;
+function run(){
+    display.innerHTML = getTimer()
+    ms++              
+    if(ms == 100){
+        ms = 0
+        s++
+    }
+    if(s == 60){
+        s = 0
+        m++
+    }
+    if(m == 60){
+        m = 0
+        h++
+    }
     
-} 
+    if(h == 13){
+        h = 1
+    } 
+}
+
+function getTimer(){
+    return (h<10 ? "0" + h: h) + " : " + (m<10 ? "0" + m : m) + " : " + (s<10 ? "0" + s : s) + " : " + (ms<10 ? "0" + ms : ms);
+}
+
+
+
+function pause(){
+    stopTimer()  
+}
+
+function stopTimer(){
+    clearInterval(timer)
+    timer = false 
+}
+
+
+
+
+function reset(){
+    stopTimer()
+    ms = 0
+    s = 0
+    m = 0
+    h = 0
+    display.innerHTML = getTimer()
+}
+
+
+
+
+function restart(){
+    if(timer){ 
+        reset()
+        start()
+    }
+    
+}
+
+
+// lap = taking screenshot of current time...
+function lap() {
+    if(timer) {   
+        var Li = document.createElement("li")   
+        Li.innerHTML = getTimer() 
+        laps.appendChild(Li) 
+    }
+}
+
+function resetLap(){
+    laps.innerHTML = ""
+}
