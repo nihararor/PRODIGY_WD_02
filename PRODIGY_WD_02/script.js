@@ -1,7 +1,7 @@
 var ms = 0, s = 0, m = 0, h = 0
 var timer;
 
-var display = document.querySelector(".timer-Display")
+var display = document.querySelector(".timer-display")
 var laps = document.querySelector(".laps")
 
 
